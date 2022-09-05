@@ -23,7 +23,7 @@ ADD php-files/etc/php/$PHP_VERSION/ /etc/php/$PHP_VERSION/
 ADD s6-files /
 #END nginx-base
 
-### ---------------------------php-prod--------------------------------------
+### ---------------------------nginx-prod--------------------------------------
 ### Build php-prod from php-base as a single layer
 ### There aren't any differences
 FROM scratch AS prod
@@ -40,4 +40,4 @@ EXPOSE 80
 
 # sets default entrypoint
 ENTRYPOINT ["/init"]
-#END dphp-prod
+#END nginx-prod
