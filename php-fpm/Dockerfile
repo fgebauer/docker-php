@@ -82,6 +82,23 @@ RUN set -eux; \
     tar -C /tmp/s6/ -Jxpf /tmp/s6-overlay-${S6_OVERLAY_ARCH}.tar.xz ;
 #END s6-overlay
 
+### ---------------------------jwilder-dockerize--------------------------------------
+FROM golang:1.19-bullseye AS jwilder-dockerize
+
+RUN apt -qq update
+RUN apt -qq install --no-install-recommends --no-install-suggests -y \
+    git \
+    openssl
+
+WORKDIR /go/src/github.com/jwilder/dockerize
+RUN git clone https://github.com/jwilder/dockerize.git .
+
+ENV GO111MODULE=on
+RUN go mod tidy
+RUN go install
+
+#END jwilder-dockerize
+
 ### ---------------------------php-base--------------------------------------
 FROM base AS php-base
 ARG PHP_VERSION="8.1"
@@ -132,6 +149,10 @@ RUN mkdir -p /run/php && chown -R www-data:www-data /run
 
 # copies from s6-overlay build stage
 COPY --from=s6-overlay /tmp/s6/ /
+
+# copies from jwilder-dockerize build stage
+COPY --from=jwilder-dockerize /go/bin/dockerize /usr/local/bin
+
 
 # files
 ADD php-files/etc/php/$PHP_VERSION/ /etc/php/$PHP_VERSION/
