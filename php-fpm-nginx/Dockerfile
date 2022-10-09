@@ -8,7 +8,7 @@ FROM fgebauer/php-fpm:$PHP_VERSION as nginx-base
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN curl https://packages.sury.org/nginx/apt.gpg  --output /etc/apt/trusted.gpg.d/nginx.gpg && \
-    echo "deb https://packages.sury.org/nginx/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list
+    echo "deb https://packages.sury.org/nginx/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/nginx.list
 
 RUN apt-get -qq update
 RUN apt-get -qq install --no-install-recommends --no-install-suggests -y \
