@@ -164,7 +164,7 @@ ARG UID=1000
 ARG GID=1000
 RUN groupadd -r -g $UID www
 RUN useradd  -r -g $GID -G root,www-data --no-log-init \
-    -d /var/www -s /usr/bin/bash -u $UID www
+    -d /var/www -s /bin/bash -u $UID www
 #END php-base
 
 ### ---------------------------php-prod--------------------------------------
