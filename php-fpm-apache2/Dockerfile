@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1.2
 
-ARG PHP_VERSION="8.1"
+ARG PHP_VERSION="8.2"
 
 ### ---------------------------apache2-base--------------------------------------
 FROM fgebauer/php-fpm:$PHP_VERSION as apache2-base

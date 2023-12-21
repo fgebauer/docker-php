@@ -83,7 +83,7 @@ RUN set -eux; \
 #END s6-overlay
 
 ### ---------------------------jwilder-dockerize--------------------------------------
-FROM golang:1.19-bullseye AS jwilder-dockerize
+FROM golang:1.21-bullseye AS jwilder-dockerize
 
 RUN apt -qq update
 RUN apt -qq install --no-install-recommends --no-install-suggests -y \
@@ -101,7 +101,7 @@ RUN go install
 
 ### ---------------------------php-base--------------------------------------
 FROM base AS php-base
-ARG PHP_VERSION="8.1"
+ARG PHP_VERSION="8.2"
 # TARGETPLATFORM is Docker buildx's target platform (e.g. linux/arm64 or linux/amd64)
 ARG TARGETPLATFORM
 
@@ -136,6 +136,9 @@ ENV php80_arm64=$php80_amd64
 ENV php81_amd64=$php80_amd64
 ENV php81_arm64=$php81_amd64
 
+ENV php82_amd64=$php80_amd64
+ENV php82_arm64=$php81_amd64
+
 RUN targetarch=${TARGETPLATFORM#linux/}; \
     pkgvar=php${PHP_VERSION//.}_${targetarch}; \
     pkgs=$(echo ${!pkgvar} | awk -v v="php$PHP_VERSION" ' BEGIN {RS=" "; }  { printf "%s-%s ",v,$0 ; }' ); \
@@ -143,7 +146,7 @@ RUN targetarch=${TARGETPLATFORM#linux/}; \
 
 RUN apt-get -qq autoremove -y
 RUN apt-get -qq autoremove && apt-get -qq clean -y && rm -rf /var/lib/apt/lists/*
-RUN	update-alternatives --set php /usr/bin/php${PHP_VERSION}
+RUN update-alternatives --set php /usr/bin/php${PHP_VERSION}
 RUN ln -sf /usr/sbin/php-fpm${PHP_VERSION} /usr/sbin/php-fpm
 RUN mkdir -p /run/php && chown -R www-data:www-data /run
 
