@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1.2
 
-ARG PHP_VERSION="8.2"
+ARG PHP_VERSION="8.3"
 
 ### ---------------------------nginx-base--------------------------------------
 FROM fgebauer/php-fpm:$PHP_VERSION as nginx-base
