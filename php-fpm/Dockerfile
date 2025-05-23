@@ -2,7 +2,7 @@
 
 ### ---------------------------base--------------------------------------
 ### Build the base Debian image that will be used in every other image
-ARG DEBIAN_VERSION="bullseye-slim"
+ARG DEBIAN_VERSION="bookworm-slim"
 FROM debian:$DEBIAN_VERSION as base
 
 ARG DEBIAN_FRONTEND=noninteractive
@@ -83,7 +83,7 @@ RUN set -eux; \
 #END s6-overlay
 
 ### ---------------------------jwilder-dockerize--------------------------------------
-FROM golang:1.21-bullseye AS jwilder-dockerize
+FROM golang:1.24-bookworm AS jwilder-dockerize
 
 RUN apt -qq update
 RUN apt -qq install --no-install-recommends --no-install-suggests -y \
