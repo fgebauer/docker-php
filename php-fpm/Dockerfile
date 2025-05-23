@@ -53,7 +53,7 @@ RUN sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
 
 ### ---------------------------s6-overlay--------------------------------------
 FROM base AS s6-overlay
-ARG S6_OVERLAY_VERSION=3.1.2.1
+ARG S6_OVERLAY_VERSION=3.2.1.0
 
 RUN apt -qq update
 RUN apt -qq install --no-install-recommends --no-install-suggests -y \
