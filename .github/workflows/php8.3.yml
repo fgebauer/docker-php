@@ -38,7 +38,7 @@ jobs:
           build-args: |
             PHP_VERSION=8.3
           push: true
-          tags: fgebauer/php-fpm:8.3, fgebauer/php-fpm:latest
+          tags: fgebauer/php-fpm:8.3
 
       - name: Build and push php-fpm-nginx:8.3
         uses: docker/build-push-action@v3
@@ -48,7 +48,7 @@ jobs:
           build-args: |
             PHP_VERSION=8.3
           push: true
-          tags: fgebauer/php-fpm-nginx:8.3, fgebauer/php-fpm-nginx:latest
+          tags: fgebauer/php-fpm-nginx:8.3
 
       - name: Build and push php-fpm-apache2:8.3
         uses: docker/build-push-action@v3
@@ -58,4 +58,4 @@ jobs:
           build-args: |
             PHP_VERSION=8.3
           push: true
-          tags: fgebauer/php-fpm-apache2:8.3, fgebauer/php-fpm-apache2:latest
+          tags: fgebauer/php-fpm-apache2:8.3
