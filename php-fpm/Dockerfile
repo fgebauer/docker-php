@@ -101,7 +101,7 @@ RUN go install
 
 ### ---------------------------php-base--------------------------------------
 FROM base AS php-base
-ARG PHP_VERSION="8.3"
+ARG PHP_VERSION="8.4"
 # TARGETPLATFORM is Docker buildx's target platform (e.g. linux/arm64 or linux/amd64)
 ARG TARGETPLATFORM
 
@@ -120,12 +120,6 @@ RUN apt -qq install --no-install-recommends --no-install-suggests -y \
 
 # The number of permutations of php packages available on each architecture because
 # too much to handle, so has been codified here instead of in obscure logic
-ENV php71_amd64="apcu apcu-bc bcmath bz2 curl cli common fpm fileinfo gd imagick intl json ldap mbstring mcrypt memcached mysql opcache pgsql readline redis soap sqlite3 uploadprogress xml xmlrpc yaml zip"
-ENV php71_arm64=$php71_amd64
-ENV php72_amd64="apcu apcu-bc bcmath bz2 curl cli common fpm fileinfo gd imagick intl json ldap mbstring memcached mysql opcache pgsql readline redis soap sqlite3 uploadprogress xml xmlrpc yaml zip"
-ENV php72_arm64=$php72_amd64
-ENV php73_amd64=$php72_amd64
-ENV php73_arm64=$php72_arm64
 ENV php74_amd64="apcu apcu-bc bcmath bz2 curl cli common fpm gd fileinfo imagick intl json ldap mbstring memcached mysql opcache pgsql readline redis soap sqlite3 uploadprogress xml xmlrpc yaml zip"
 ENV php74_arm64=$php74_amd64
 
@@ -141,6 +135,9 @@ ENV php82_arm64=$php82_amd64
 
 ENV php83_amd64=$php80_amd64
 ENV php83_arm64=$php83_amd64
+
+ENV php84_amd64=$php80_amd64
+ENV php84_arm64=$php83_amd64
 
 RUN targetarch=${TARGETPLATFORM#linux/}; \
     pkgvar=php${PHP_VERSION//.}_${targetarch}; \
