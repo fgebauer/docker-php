@@ -4,6 +4,12 @@ on:
   workflow_dispatch:
   push:
     branches: [ 'develop' ]
+    paths:
+      - 'php-fpm/**'
+      - 'php-fpm-nginx/**'
+      - 'php-fpm-apache2/**'
+  schedule:
+    - cron: '15 12 * * 6'  # Run once a week on Saturday at 12:15 UTC
 
 jobs:
 
