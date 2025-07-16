@@ -16,6 +16,7 @@ A collection of Docker images for PHP applications with different configurations
 - Includes common PHP extensions for web applications
 - Optimized for production use
 - Multi-architecture support (amd64, arm64)
+- Configurable UID/GID for the www user (via WWW_UID/WWW_GID environment variables)
 
 ## Usage
 

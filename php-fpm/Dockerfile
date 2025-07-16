@@ -162,12 +162,15 @@ ADD php-files/etc/php/$PHP_VERSION/ /etc/php/$PHP_VERSION/
 ADD s6-files /
 ADD misc-files /
 
-# add unprivileged user and group
+# add unprivileged user and group (can be overridden at runtime via WWW_UID/WWW_GID env vars)
 ARG UID=1000
 ARG GID=1000
-RUN groupadd -r -g $UID www
+RUN groupadd -r -g $GID www
 RUN useradd  -r -g $GID -G root,www-data --no-log-init \
     -d /var/www -s /bin/bash -u $UID www
+
+# Make init-user.sh executable
+RUN chmod +x /usr/local/bin/init-user.sh
 #END php-base
 
 ### ---------------------------php-prod--------------------------------------

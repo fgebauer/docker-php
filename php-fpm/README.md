@@ -29,6 +29,15 @@ Run a container:
 docker run -d --name php-fpm -p 9000:9000 -v /path/to/your/app:/var/www/html fgebauer/php-fpm:8.4
 ```
 
+Run with custom UID/GID:
+
+```bash
+docker run -d --name php-fpm -p 9000:9000 \
+  -e WWW_UID=1001 -e WWW_GID=1001 \
+  -v /path/to/your/app:/var/www/html \
+  fgebauer/php-fpm:8.4
+```
+
 ## Available Tags
 
 - `7.4` - PHP 7.4
@@ -70,6 +79,8 @@ docker run -d \
 
 - `TZ`: Timezone (default: Europe/Berlin)
 - `LC_ALL`, `LANG`, `LANGUAGE`: Locale settings (default: en_US.UTF-8)
+- `WWW_UID`: User ID for the www user (default: 1000)
+- `WWW_GID`: Group ID for the www user (default: 1000)
 
 ## License
 
