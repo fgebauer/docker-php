@@ -83,7 +83,7 @@ RUN set -eux; \
 #END s6-overlay
 
 ### ---------------------------jwilder-dockerize--------------------------------------
-FROM golang:1.24-bookworm AS jwilder-dockerize
+FROM golang:1.25-bookworm AS jwilder-dockerize
 
 RUN apt -qq update
 RUN apt -qq install --no-install-recommends --no-install-suggests -y \
