@@ -37,6 +37,7 @@ RUN apt -qq install --no-install-recommends --no-install-suggests -y \
 
 # set locale
 RUN sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
+    sed -i -e 's/# en_GB.UTF-8 UTF-8/en_GB.UTF-8 UTF-8/' /etc/locale.gen && \
     sed -i -e 's/# de_DE.UTF-8 UTF-8/de_DE.UTF-8 UTF-8/' /etc/locale.gen && \
     sed -i -e 's/# en_IE.UTF-8 UTF-8/en_IE.UTF-8 UTF-8/' /etc/locale.gen && \
     sed -i -e 's/# es_ES.UTF-8 UTF-8/es_ES.UTF-8 UTF-8/' /etc/locale.gen && \
