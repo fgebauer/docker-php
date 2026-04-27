@@ -7,8 +7,9 @@ FROM fgebauer/php-fpm:$PHP_VERSION as nginx-base
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN curl https://packages.sury.org/nginx/apt.gpg  --output /etc/apt/trusted.gpg.d/nginx.gpg && \
-    echo "deb https://packages.sury.org/nginx/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/nginx.list
+RUN curl -fsSL https://nginx.org/keys/nginx_signing.key --output /etc/apt/trusted.gpg.d/nginx.asc && \
+    echo "deb https://nginx.org/packages/debian/ $(lsb_release -sc) nginx" > /etc/apt/sources.list.d/nginx.list && \
+    printf 'Package: nginx*\nPin: origin nginx.org\nPin-Priority: 900\n' > /etc/apt/preferences.d/nginx
 
 RUN apt-get -qq update
 RUN apt-get -qq install --no-install-recommends --no-install-suggests -y \
