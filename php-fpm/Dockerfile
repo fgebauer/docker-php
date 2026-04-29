@@ -108,8 +108,9 @@ ARG TARGETPLATFORM
 
 SHELL ["/bin/bash", "-c"]
 
-RUN curl https://packages.sury.org/php/apt.gpg  --output /etc/apt/trusted.gpg.d/php.gpg && \
-    echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list
+RUN install -d /etc/apt/keyrings && \
+    curl -fsSL https://packages.sury.org/php/apt.gpg --output /etc/apt/keyrings/php.gpg && \
+    echo "deb [signed-by=/etc/apt/keyrings/php.gpg] https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list
 
 RUN apt -qq update
 RUN apt -qq install --no-install-recommends --no-install-suggests -y \
