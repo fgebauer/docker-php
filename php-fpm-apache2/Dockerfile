@@ -7,9 +7,6 @@ FROM fgebauer/php-fpm:$PHP_VERSION as apache2-base
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN curl https://packages.sury.org/apache2/apt.gpg  --output /etc/apt/trusted.gpg.d/apache2.gpg && \
-    echo "deb https://packages.sury.org/apache2/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/apache2.list
-
 RUN apt-get -qq update
 RUN apt-get -qq install --no-install-recommends --no-install-suggests -y \
     apache2
