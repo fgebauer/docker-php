@@ -122,24 +122,18 @@ RUN apt -qq install --no-install-recommends --no-install-suggests -y \
 
 # The number of permutations of php packages available on each architecture because
 # too much to handle, so has been codified here instead of in obscure logic
-ENV php74_amd64="apcu apcu-bc bcmath bz2 curl cli common fpm gd fileinfo imagick intl json ldap mbstring memcached mysql opcache pgsql readline redis soap sqlite3 uploadprogress xml xmlrpc yaml zip"
-ENV php74_arm64=$php74_amd64
-
-# As of php8.0 json is now part of core package and xmlrpc has been removed from PECL
-ENV php80_amd64="apcu bcmath bz2 curl cli common fpm gd fileinfo imagick intl ldap mbstring memcached mysql opcache pgsql readline redis soap sqlite3 uploadprogress xml xmlrpc yaml zip"
-ENV php80_arm64=$php80_amd64
-
-ENV php81_amd64=$php80_amd64
+# json is part of the core package and xmlrpc comes from PECL from php8.0 onward
+ENV php81_amd64="apcu bcmath bz2 curl cli common fpm gd fileinfo imagick intl ldap mbstring memcached mysql opcache pgsql readline redis soap sqlite3 uploadprogress xml xmlrpc yaml zip"
 ENV php81_arm64=$php81_amd64
 
-ENV php82_amd64=$php80_amd64
+ENV php82_amd64=$php81_amd64
 ENV php82_arm64=$php82_amd64
 
-ENV php83_amd64=$php80_amd64
+ENV php83_amd64=$php81_amd64
 ENV php83_arm64=$php83_amd64
 
-ENV php84_amd64=$php80_amd64
-ENV php84_arm64=$php83_amd64
+ENV php84_amd64=$php81_amd64
+ENV php84_arm64=$php84_amd64
 
 # As of php8.5 Zend OPcache is compiled into the php8.5-cli/php8.5-fpm SAPIs;
 # there is no php8.5-opcache package in the sury.org repo.
