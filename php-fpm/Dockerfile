@@ -141,6 +141,11 @@ ENV php83_arm64=$php83_amd64
 ENV php84_amd64=$php80_amd64
 ENV php84_arm64=$php83_amd64
 
+# As of php8.5 Zend OPcache is compiled into the php8.5-cli/php8.5-fpm SAPIs;
+# there is no php8.5-opcache package in the sury.org repo.
+ENV php85_amd64="apcu bcmath bz2 curl cli common fpm gd fileinfo imagick intl ldap mbstring memcached mysql pgsql readline redis soap sqlite3 uploadprogress xml xmlrpc yaml zip"
+ENV php85_arm64=$php85_amd64
+
 RUN targetarch=${TARGETPLATFORM#linux/}; \
     pkgvar=php${PHP_VERSION//.}_${targetarch}; \
     pkgs=$(echo ${!pkgvar} | awk -v v="php$PHP_VERSION" ' BEGIN {RS=" "; }  { printf "%s-%s ",v,$0 ; }' ); \
