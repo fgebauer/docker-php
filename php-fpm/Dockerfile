@@ -102,7 +102,7 @@ RUN go install
 
 ### ---------------------------php-base--------------------------------------
 FROM base AS php-base
-ARG PHP_VERSION="8.4"
+ARG PHP_VERSION="8.5"
 # TARGETPLATFORM is Docker buildx's target platform (e.g. linux/arm64 or linux/amd64)
 ARG TARGETPLATFORM
 
