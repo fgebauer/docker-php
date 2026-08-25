@@ -7,7 +7,7 @@ A Debian-based Docker image with PHP-FPM for running PHP applications.
 ## Features
 
 - Based on Debian Bookworm
-- Multiple PHP versions available (7.4, 8.0, 8.1, 8.2, 8.3, 8.4)
+- Multiple PHP versions available (8.1, 8.2, 8.3, 8.4, 8.5)
 - Includes s6-overlay for process supervision
 - Includes common PHP extensions:
   - apcu, bcmath, bz2, curl, gd, fileinfo, imagick, intl, ldap, mbstring
@@ -20,13 +20,13 @@ A Debian-based Docker image with PHP-FPM for running PHP applications.
 ## Usage
 
 ```bash
-docker pull fgebauer/php-fpm:8.4
+docker pull fgebauer/php-fpm:8.5
 ```
 
 Run a container:
 
 ```bash
-docker run -d --name php-fpm -p 9000:9000 -v /path/to/your/app:/var/www/html fgebauer/php-fpm:8.4
+docker run -d --name php-fpm -p 9000:9000 -v /path/to/your/app:/var/www/html fgebauer/php-fpm:8.5
 ```
 
 Run with custom UID/GID:
@@ -35,17 +35,16 @@ Run with custom UID/GID:
 docker run -d --name php-fpm -p 9000:9000 \
   -e WWW_UID=1001 -e WWW_GID=1001 \
   -v /path/to/your/app:/var/www/html \
-  fgebauer/php-fpm:8.4
+  fgebauer/php-fpm:8.5
 ```
 
 ## Available Tags
 
-- `7.4` - PHP 7.4
-- `8.0` - PHP 8.0
 - `8.1` - PHP 8.1
 - `8.2` - PHP 8.2
 - `8.3` - PHP 8.3
-- `8.4` - PHP 8.4 (latest)
+- `8.4` - PHP 8.4
+- `8.5` - PHP 8.5 (latest)
 
 ## Dockerfile Details
 
@@ -70,9 +69,9 @@ You can customize the configuration by mounting your own files:
 
 ```bash
 docker run -d \
-  -v /path/to/custom/php.ini:/etc/php/8.4/fpm/php.ini \
-  -v /path/to/custom/www.conf:/etc/php/8.4/fpm/pool.d/www.conf \
-  fgebauer/php-fpm:8.4
+  -v /path/to/custom/php.ini:/etc/php/8.5/fpm/php.ini \
+  -v /path/to/custom/www.conf:/etc/php/8.5/fpm/pool.d/www.conf \
+  fgebauer/php-fpm:8.5
 ```
 
 ## Environment Variables

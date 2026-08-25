@@ -10,7 +10,7 @@ A collection of Docker images for PHP applications with different configurations
 
 ## Features
 
-- Multiple PHP versions supported (7.4, 8.0, 8.1, 8.2, 8.3, 8.4)
+- Multiple PHP versions supported (8.1, 8.2, 8.3, 8.4, 8.5)
 - Based on Debian Bookworm
 - Uses s6-overlay for process supervision
 - Includes common PHP extensions for web applications
@@ -23,31 +23,30 @@ A collection of Docker images for PHP applications with different configurations
 ### PHP-FPM Base Image
 
 ```bash
-docker pull fgebauer/php-fpm:8.4
+docker pull fgebauer/php-fpm:8.5
 ```
 
 ### PHP-FPM with Apache2
 
 ```bash
-docker pull fgebauer/php-fpm-apache2:8.4
+docker pull fgebauer/php-fpm-apache2:8.5
 ```
 
 ### PHP-FPM with Nginx
 
 ```bash
-docker pull fgebauer/php-fpm-nginx:8.4
+docker pull fgebauer/php-fpm-nginx:8.5
 ```
 
 ## Available Tags
 
 Each image is available with the following tags corresponding to PHP versions:
 
-- `7.4`
-- `8.0`
 - `8.1`
 - `8.2`
 - `8.3`
-- `8.4` (latest)
+- `8.4`
+- `8.5` (latest)
 
 ## Configuration
 

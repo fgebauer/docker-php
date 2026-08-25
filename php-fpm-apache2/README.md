@@ -8,7 +8,7 @@ A Debian-based Docker image with PHP-FPM and Apache2 for running PHP web applica
 
 - Based on [fgebauer/php-fpm](../php-fpm) image
 - Apache2 web server with PHP-FPM integration
-- Multiple PHP versions available (7.4, 8.0, 8.1, 8.2, 8.3, 8.4)
+- Multiple PHP versions available (8.1, 8.2, 8.3, 8.4, 8.5)
 - Includes s6-overlay for process supervision
 - Optimized for production use
 - Multi-architecture support (amd64, arm64)
@@ -16,23 +16,22 @@ A Debian-based Docker image with PHP-FPM and Apache2 for running PHP web applica
 ## Usage
 
 ```bash
-docker pull fgebauer/php-fpm-apache2:8.4
+docker pull fgebauer/php-fpm-apache2:8.5
 ```
 
 Run a container:
 
 ```bash
-docker run -d --name php-apache -p 80:80 -v /path/to/your/app:/var/www/html fgebauer/php-fpm-apache2:8.4
+docker run -d --name php-apache -p 80:80 -v /path/to/your/app:/var/www/html fgebauer/php-fpm-apache2:8.5
 ```
 
 ## Available Tags
 
-- `7.4` - PHP 7.4 with Apache2
-- `8.0` - PHP 8.0 with Apache2
 - `8.1` - PHP 8.1 with Apache2
 - `8.2` - PHP 8.2 with Apache2
 - `8.3` - PHP 8.3 with Apache2
-- `8.4` - PHP 8.4 with Apache2 (latest)
+- `8.4` - PHP 8.4 with Apache2
+- `8.5` - PHP 8.5 with Apache2 (latest)
 
 ## Dockerfile Details
 
@@ -64,8 +63,8 @@ You can customize the configuration by mounting your own files:
 ```bash
 docker run -d \
   -v /path/to/custom/000-default.conf:/etc/apache2/sites-enabled/000-default.conf \
-  -v /path/to/custom/php.ini:/etc/php/8.4/fpm/php.ini \
-  fgebauer/php-fpm-apache2:8.4
+  -v /path/to/custom/php.ini:/etc/php/8.5/fpm/php.ini \
+  fgebauer/php-fpm-apache2:8.5
 ```
 
 ## Environment Variables
