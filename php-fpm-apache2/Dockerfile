@@ -4,6 +4,7 @@ ARG PHP_VERSION="8.5"
 
 ### ---------------------------apache2-base--------------------------------------
 FROM fgebauer/php-fpm:$PHP_VERSION as apache2-base
+ARG PHP_VERSION
 
 ENV DEBIAN_FRONTEND=noninteractive
 

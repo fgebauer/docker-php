@@ -4,6 +4,7 @@ ARG PHP_VERSION="8.5"
 
 ### ---------------------------nginx-base--------------------------------------
 FROM fgebauer/php-fpm:$PHP_VERSION as nginx-base
+ARG PHP_VERSION
 
 ENV DEBIAN_FRONTEND=noninteractive
 
