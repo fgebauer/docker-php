@@ -84,7 +84,7 @@ RUN set -eux; \
 #END s6-overlay
 
 ### ---------------------------jwilder-dockerize--------------------------------------
-FROM golang:1.25-bookworm AS jwilder-dockerize
+FROM golang:1.27-bookworm AS jwilder-dockerize
 
 RUN apt -qq update
 RUN apt -qq install --no-install-recommends --no-install-suggests -y \
@@ -92,7 +92,8 @@ RUN apt -qq install --no-install-recommends --no-install-suggests -y \
     openssl
 
 WORKDIR /go/src/github.com/jwilder/dockerize
-RUN git clone https://github.com/jwilder/dockerize.git .
+ARG DOCKERIZE_VERSION="v0.15.0"
+RUN git clone --depth 1 --branch "$DOCKERIZE_VERSION" https://github.com/jwilder/dockerize.git .
 
 ENV GO111MODULE=on
 RUN go mod tidy
