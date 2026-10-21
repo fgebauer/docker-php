@@ -92,7 +92,7 @@ RUN apt -qq install --no-install-recommends --no-install-suggests -y \
     openssl
 
 WORKDIR /go/src/github.com/jwilder/dockerize
-ARG DOCKERIZE_VERSION="v0.15.0"
+ARG DOCKERIZE_VERSION="v0.15.2"
 RUN git clone --depth 1 --branch "$DOCKERIZE_VERSION" https://github.com/jwilder/dockerize.git .
 
 ENV GO111MODULE=on
