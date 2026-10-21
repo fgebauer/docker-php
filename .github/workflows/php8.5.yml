@@ -9,7 +9,7 @@ on:
       - 'php-fpm-nginx/**'
       - 'php-fpm-apache2/**'
   schedule:
-    - cron: '15 15 * * 6'  # Run once a week on Saturday at 15:15 UTC
+    - cron: '15 15 * * 6'  # Run once a week on Saturday at 15:15 UTC, kept enabled by keepalive.yml
 
 jobs:
 
