@@ -8,6 +8,8 @@ ARG PHP_VERSION
 
 ENV DEBIAN_FRONTEND=noninteractive
 
+# nginx comes from the nginx.org *stable* repo (not Debian/sury), unpinned:
+# every rebuild picks up the latest stable security release.
 RUN curl -fsSL https://nginx.org/keys/nginx_signing.key --output /etc/apt/trusted.gpg.d/nginx.asc && \
     echo "deb https://nginx.org/packages/debian/ $(lsb_release -sc) nginx" > /etc/apt/sources.list.d/nginx.list && \
     printf 'Package: nginx*\nPin: origin nginx.org\nPin-Priority: 900\n' > /etc/apt/preferences.d/nginx
