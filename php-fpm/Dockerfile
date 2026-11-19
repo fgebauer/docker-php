@@ -109,6 +109,9 @@ ARG TARGETPLATFORM
 
 SHELL ["/bin/bash", "-c"]
 
+# PHP comes from packages.sury.org. PHP 8.1 is EOL upstream (no php.net releases);
+# Sury backports security fixes into its 8.1.34-N revisions instead (e.g. 8.1.34-13
+# carries the fixes from 8.2.36). Rebuilds pick these up automatically.
 RUN install -d /etc/apt/keyrings && \
     curl -fsSL https://packages.sury.org/php/apt.gpg --output /etc/apt/keyrings/php.gpg && \
     echo "deb [signed-by=/etc/apt/keyrings/php.gpg] https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list
